@@ -1,0 +1,84 @@
+﻿:root {
+    --color-base-100: #2a303c;
+    --color-base-200: #242933;
+    --color-base-300: #20252e;
+
+    --color-base-100-text: #b2ccd6;
+    --color-base-200-text: #7c8d98;
+    --color-base-300-text: #464f5b;
+
+    --color-accent: #ff5d5d;
+
+    --border: 1px;
+
+    --shadow-action-neon: 0 0 10px var(--color-accent);
+    --shadow-inner: inset 0 0 5px var(--color-base-300);
+
+    /* Colores de las estadísticas - basados en rangos de valores */
+    --stat-very-low: #f34444; /* 0-30 */
+    --stat-low: #ff7f0f; /* 31-60 */
+    --stat-medium: #ffdd57; /* 61-90 */
+    --stat-high: #a0e515; /* 91-120 */
+    --stat-very-high: #23cd5e; /* 121-150 */
+    --stat-max: #00c2b8; /* 151+ */
+
+    --male-color: #3090f0;
+    --female-color: #ff77a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    background-color: var(--color-base-200);
+    color: var(--color-base-100-text);
+}
+
+h1:focus {
+    outline: none;
+}
+
+a, .btn-link {
+    color: #0071c1;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}

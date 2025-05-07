@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="b58554ee-3eff-4d7e-bd54-476bc9c1fbca" name="PKzenDB Mapping">
+      <data-sources db="5106f5c0-bd3b-4941-bf63-cb78d85fbe04" ddl="7902411f-0a79-4a71-b977-eeeaa45c57b6" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+</project>
