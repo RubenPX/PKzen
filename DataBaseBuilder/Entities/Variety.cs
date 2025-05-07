@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class Variety
-{
+public class Variety {
     public int Id { get; set; }
     public bool IsDefault { get; set; }
     public string Name { get; set; }
@@ -13,10 +12,8 @@ public class Variety
     public Species Species { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Variety>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<Variety>(entity => {
             entity.HasKey(v => v.Id);
 
             entity.Property(v => v.IsDefault).IsRequired();

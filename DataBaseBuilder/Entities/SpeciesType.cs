@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class SpeciesType
-{
+public class SpeciesType {
     public int Id { get; set; }
     public int Slot { get; set; }
     public int SpeciesId { get; set; }
@@ -16,10 +15,8 @@ public class SpeciesType
     public Type Type { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<SpeciesType>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<SpeciesType>(entity => {
             entity.HasKey(st => st.Id);
 
             entity.Property(st => st.Slot).IsRequired();

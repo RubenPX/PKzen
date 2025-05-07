@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class PokemonStat
-{
+public class PokemonStat {
     public int Id { get; set; }
     public int BaseStat { get; set; }
     public int Effort { get; set; }
@@ -17,10 +16,8 @@ public class PokemonStat
     public Stat Stat { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<PokemonStat>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<PokemonStat>(entity => {
             entity.HasKey(ps => ps.Id);
 
             entity.Property(ps => ps.BaseStat).IsRequired();

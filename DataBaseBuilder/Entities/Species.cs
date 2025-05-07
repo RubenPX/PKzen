@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class Species
-{
+public class Species {
     public int Id { get; set; }
     public int BaseHappiness { get; set; }
     public int CaptureRate { get; set; }
@@ -21,10 +20,8 @@ public class Species
     public bool IsMythical { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Species>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<Species>(entity => {
             entity.HasKey(s => s.Id);
             entity.Property(s => s.BaseHappiness).IsRequired();
             entity.Property(s => s.CaptureRate).IsRequired();

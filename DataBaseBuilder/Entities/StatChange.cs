@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class StatChange
-{
+public class StatChange {
     public int Id { get; set; }
     public int Change { get; set; }
     public int StatId { get; set; }
@@ -16,10 +15,8 @@ public class StatChange
     public Move Move { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<StatChange>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<StatChange>(entity => {
             entity.HasKey(sc => sc.Id);
 
             entity.Property(sc => sc.Change).IsRequired();
