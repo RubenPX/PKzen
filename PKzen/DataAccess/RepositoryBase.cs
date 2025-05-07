@@ -2,19 +2,19 @@
 using Microsoft.Data.Sqlite;
 using PKzen.Data;
 
-namespace PKzen.DataAccess
-{
-    public abstract class RepositoryBase<T> : IRepository<T>
-    {
-        protected readonly SqliteConnection Conn = Database.Instance.Connection;
+namespace PKzen.DataAccess;
 
-        public abstract T GetById(int id);
-        public abstract IEnumerable<T> GetAll();
+public abstract class RepositoryBase<T> : IRepository<T> {
+    protected readonly SqliteConnection Conn = Database.Instance.Connection;
 
-        protected IEnumerable<TModel> Query<TModel>(string sql, object? param = null)
-            => Conn.Query<TModel>(sql, param);
+    public abstract T GetById(int id);
+    public abstract IEnumerable<T> GetAll();
 
-        protected TModel? QuerySingle<TModel>(string sql, object param)
-            => Conn.QuerySingleOrDefault<TModel>(sql, param);
+    protected IEnumerable<TModel> Query<TModel>(string sql, object? param = null) {
+        return Conn.Query<TModel>(sql, param);
+    }
+
+    protected TModel? QuerySingle<TModel>(string sql, object param) {
+        return Conn.QuerySingleOrDefault<TModel>(sql, param);
     }
 }

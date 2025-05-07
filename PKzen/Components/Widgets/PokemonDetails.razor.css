@@ -76,10 +76,10 @@
     margin-top: 15px;
 }
 
-    .type-icons .type-icon {
-        height: 20px;
-        object-fit: scale-down;
-    }
+.type-icons .type-icon {
+    height: 20px;
+    object-fit: scale-down;
+}
 
 .type-card {
     width: 120px;
@@ -237,10 +237,10 @@
     box-shadow: var(--shadow-inner);
 }
 
-    .evolution-img.active {
-        border: 2px solid var(--color-accent);
-        box-shadow: var(--shadow-action-neon);
-    }
+.evolution-img.active {
+    border: 2px solid var(--color-accent);
+    box-shadow: var(--shadow-action-neon);
+}
 
 .evolution-name {
     font-size: 12px;
@@ -313,10 +313,10 @@
     background-color: var(--color-base-200);
 }
 
-    .gender-button.male {
-        color: var(--male-color);
-    }
+.gender-button.male {
+    color: var(--male-color);
+}
 
-    .gender-button.female {
-        color: var(--female-color);
-    }
+.gender-button.female {
+    color: var(--female-color);
+}

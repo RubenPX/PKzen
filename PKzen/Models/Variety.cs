@@ -1,27 +1,25 @@
 ﻿using PKzen.DataAccess;
 
-namespace PKzen.Models
-{
-    public class Variety
-    {
-        public int Id { get; }
-        public bool IsDefault { get; }
-        public string Name { get; }
-        public int SpeciesId { get; }
+namespace PKzen.Models;
 
-        private Species? _species;
-        private readonly SpeciesDal _speciesDal = new();
+public class Variety {
+    private readonly SpeciesDal _speciesDal = new();
 
-        public Variety() { }
+    private Species? _species;
 
-        public Variety(int id, bool isDefault, string name, int speciesId)
-        {
-            Id = id;
-            IsDefault = isDefault;
-            Name = name;
-            SpeciesId = speciesId;
-        }
+    public Variety() { }
 
-        public Species Species => _species ??= _speciesDal.GetById(SpeciesId);
+    public Variety(int id, bool isDefault, string name, int speciesId) {
+        Id = id;
+        IsDefault = isDefault;
+        Name = name;
+        SpeciesId = speciesId;
     }
+
+    public int Id { get; }
+    public bool IsDefault { get; }
+    public string Name { get; }
+    public int SpeciesId { get; }
+
+    public Species Species => _species ??= _speciesDal.GetById(SpeciesId);
 }

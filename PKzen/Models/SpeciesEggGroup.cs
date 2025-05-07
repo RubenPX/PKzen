@@ -1,23 +1,21 @@
 ﻿using PKzen.DataAccess;
 
-namespace PKzen.Models
-{
-    public class SpeciesEggGroup
-    {
-        public int SpeciesId { get; }
-        public int EggGroupId { get; }
+namespace PKzen.Models;
 
-        private EggGroup? _eggGroup;
-        private readonly EggGroupDal _eggGroupDal = new();
+public class SpeciesEggGroup {
+    private readonly EggGroupDal _eggGroupDal = new();
 
-        public SpeciesEggGroup() { }
+    private EggGroup? _eggGroup;
 
-        public SpeciesEggGroup(int speciesId, int eggGroupId)
-        {
-            SpeciesId = speciesId;
-            EggGroupId = eggGroupId;
-        }
+    public SpeciesEggGroup() { }
 
-        public EggGroup EggGroup => _eggGroup ??= _eggGroupDal.GetById(EggGroupId);
+    public SpeciesEggGroup(int speciesId, int eggGroupId) {
+        SpeciesId = speciesId;
+        EggGroupId = eggGroupId;
     }
+
+    public int SpeciesId { get; }
+    public int EggGroupId { get; }
+
+    public EggGroup EggGroup => _eggGroup ??= _eggGroupDal.GetById(EggGroupId);
 }

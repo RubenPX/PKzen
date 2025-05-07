@@ -1,25 +1,23 @@
 ﻿using PKzen.DataAccess;
 
-namespace PKzen.Models
-{
-    public class DamageRelation
-    {
-        public int SpeciesId { get; }
-        public int TypeId { get; }
-        public double RelationType { get; }
+namespace PKzen.Models;
 
-        private Type? _type;
-        private readonly TypeDal _typeDal = new();
+public class DamageRelation {
+    private readonly TypeDal _typeDal = new();
 
-        public DamageRelation() { }
+    private Type? _type;
 
-        public DamageRelation(int speciesId, int typeId, double relationType)
-        {
-            SpeciesId = speciesId;
-            TypeId = typeId;
-            RelationType = relationType;
-        }
+    public DamageRelation() { }
 
-        public Type Type => _type ??= _typeDal.GetById(TypeId);
+    public DamageRelation(int speciesId, int typeId, double relationType) {
+        SpeciesId = speciesId;
+        TypeId = typeId;
+        RelationType = relationType;
     }
+
+    public int SpeciesId { get; }
+    public int TypeId { get; }
+    public double RelationType { get; }
+
+    public Type Type => _type ??= _typeDal.GetById(TypeId);
 }

@@ -9,9 +9,9 @@
         xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Background="#242933" 
+        Background="#242933"
         Title="MainWindow" Height="650" Width="1200">
-    
+
     <WindowChrome.WindowChrome>
         <shell:WindowChrome />
     </WindowChrome.WindowChrome>

@@ -41,32 +41,32 @@
     align-items: center;
 }
 
-    .navbar-menu li {
-        cursor: pointer;
-        padding: 8px 0;
-        position: relative;
-    }
+.navbar-menu li {
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+}
 
-        .navbar-menu li a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
+.navbar-menu li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 
-            .navbar-menu li a svg {
-                width: 25px;
-                height: 25px;
-                color: var(--color-base-200-text);
-                transition: color 0.3s ease;
-            }
+.navbar-menu li a svg {
+    width: 25px;
+    height: 25px;
+    color: var(--color-base-200-text);
+    transition: color 0.3s ease;
+}
 
-        .navbar-menu li.active a svg {
-            color: var(--color-accent);
-        }
+.navbar-menu li.active a svg {
+    color: var(--color-accent);
+}
 
-        .navbar-menu li:hover a svg {
-            color: var(--color-base-100-text);
-        }
+.navbar-menu li:hover a svg {
+    color: var(--color-base-100-text);
+}
 
 /* Área principal */
 .main-wrapper {

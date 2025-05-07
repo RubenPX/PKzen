@@ -1,17 +1,19 @@
 ﻿using PKzen.Models;
 
-namespace PKzen.DataAccess
-{
-    public class DamageRelationDal : RepositoryBase<DamageRelation>
-    {
-        private const string TABLE = "DamageRelation";
+namespace PKzen.DataAccess;
 
-        public override DamageRelation GetById(int id) => throw new System.NotImplementedException();
+public class DamageRelationDal : RepositoryBase<DamageRelation> {
+    private const string TABLE = "DamageRelation";
 
-        public override IEnumerable<DamageRelation> GetAll()
-            => Query<DamageRelation>($"SELECT * FROM {TABLE}");
+    public override DamageRelation GetById(int id) {
+        throw new NotImplementedException();
+    }
 
-        public IEnumerable<DamageRelation> GetBySpeciesId(int speciesId)
-            => Query<DamageRelation>($"SELECT * FROM {TABLE} WHERE SpeciesId = @SpeciesId", new { SpeciesId = speciesId });
+    public override IEnumerable<DamageRelation> GetAll() {
+        return Query<DamageRelation>($"SELECT * FROM {TABLE}");
+    }
+
+    public IEnumerable<DamageRelation> GetBySpeciesId(int speciesId) {
+        return Query<DamageRelation>($"SELECT * FROM {TABLE} WHERE SpeciesId = @SpeciesId", new { SpeciesId = speciesId });
     }
 }

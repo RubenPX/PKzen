@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class Sprite
-{
+public class Sprite {
     public int Id { get; set; }
     public string? Name { get; set; }
     public bool Icon { get; set; }
@@ -21,10 +20,8 @@ public class Sprite
     public Species Species { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Sprite>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<Sprite>(entity => {
             entity.HasKey(s => s.Id);
 
             entity.Property(s => s.Name);

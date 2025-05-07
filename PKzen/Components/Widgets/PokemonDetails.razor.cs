@@ -1,39 +1,33 @@
 ﻿using System.Globalization;
 using PKzen.DataAccess;
 
-namespace PKzen.Components.Widgets
-{
-    public partial class PokemonDetails
-    {
-        private async Task HandleClose()
-        {
-            await OnClose.InvokeAsync();
-        }
+namespace PKzen.Components.Widgets;
 
-        private (string Percentage, string Color) GetStatPercentageAndColor(int statValue)
-        {
-            double percentage = (double)statValue / 180 * 100;
-            string formattedPercentage = percentage.ToString("F2", CultureInfo.InvariantCulture);
+public partial class PokemonDetails {
+    private async Task HandleClose() {
+        await OnClose.InvokeAsync();
+    }
 
-            string color = statValue switch
-            {
-                <= 30 => "var(--stat-very-low)",
-                <= 60 => "var(--stat-low)",
-                <= 90 => "var(--stat-medium)",
-                <= 120 => "var(--stat-high)",
-                <= 150 => "var(--stat-very-high)",
-                _ => "var(--stat-max)"
-            };
+    private (string Percentage, string Color) GetStatPercentageAndColor(int statValue) {
+        var percentage = (double)statValue / 180 * 100;
+        var formattedPercentage = percentage.ToString("F2", CultureInfo.InvariantCulture);
 
-            return (formattedPercentage, color);
-        }
+        var color = statValue switch {
+            <= 30 => "var(--stat-very-low)",
+            <= 60 => "var(--stat-low)",
+            <= 90 => "var(--stat-medium)",
+            <= 120 => "var(--stat-high)",
+            <= 150 => "var(--stat-very-high)",
+            _ => "var(--stat-max)"
+        };
 
-        private string? GetPokemonsSpriteByName(string pokemonName, string spriteName)
-        {
-            var pokemonDal = new PokemonDal();
-            var pokemon = pokemonDal.GetByName(pokemonName);
+        return (formattedPercentage, color);
+    }
 
-            return pokemon.Species.Sprites.FirstOrDefault(s => s.Name == spriteName)?.FrontMale;
-        }
+    private string? GetPokemonsSpriteByName(string pokemonName, string spriteName) {
+        var pokemonDal = new PokemonDal();
+        var pokemon = pokemonDal.GetByName(pokemonName);
+
+        return pokemon.Species.Sprites.FirstOrDefault(s => s.Name == spriteName)?.FrontMale;
     }
 }

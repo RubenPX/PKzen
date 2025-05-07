@@ -1,5 +1,5 @@
 ﻿@using PKzen.Models
-
+@using Type = PKzen.Models.Type
 <div class="pokemon-detail-card">
     <!-- Close button -->
     <div class="close-button" @onclick="HandleClose">×</div>
@@ -16,12 +16,11 @@
         <h1 class="pokemon-name">@Pokemon.Name</h1>
         <p class="pokemon-title">@Pokemon.Species.Genera</p>
         <div class="type-icons">
-            @foreach (var type in Pokemon.Species.Types)
-            {
-                var typeColor = PKzen.Models.Type.GetTypeColor(type.Type.Id);
+            @foreach (var type in Pokemon.Species.Types) {
+                var typeColor = Type.GetTypeColor(type.Type.Id);
                 <div class="type-icon-container">
                     <img src="@type.Type.Name" alt="@type.Type.Name" class="type-icon"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/>
                     <div class="type-card" style="display: none; background-color: @typeColor;">@type.Type.Name</div>
                 </div>
             }
@@ -31,8 +30,7 @@
     <div class="pokemon-detail-card-section">
         <h2 class="section-title">HABILIDADES</h2>
         <div class="abilities">
-            @foreach (var ability in Pokemon.Abilities)
-            {
+            @foreach (var ability in Pokemon.Abilities) {
                 <div class="ability">@ability.Name</div>
             }
         </div>
@@ -48,8 +46,7 @@
     <div class="pokemon-detail-card-section">
         <h2 class="section-title">ESTADÍSTICAS</h2>
         <div class="stats-container">
-            @foreach (var stat in Pokemon.Stats)
-            {
+            @foreach (var stat in Pokemon.Stats) {
                 var (percentage, color) = GetStatPercentageAndColor(stat.BaseStat);
                 <div class="stat-row">
                     <div class="stat-name">@stat.Stat.Name</div>
@@ -64,53 +61,43 @@
 
     <div class="pokemon-detail-card-section">
         <h2 class="section-title">EVOLUCIÓN</h2>
-        @if (Pokemon.Species.EvolutionChains.FirstOrDefault() is var chain && chain != null)
-        {
+        @if (Pokemon.Species.EvolutionChains.FirstOrDefault() is var chain && chain != null) {
             var evolvable = chain.Members
-                                 .Where(m => m.MinLevel.HasValue && m.MinLevel.Value > 0)
-                                 .OrderBy(m => m.MinLevel.Value)
-                                 .ToList();
+                .Where(m => m.MinLevel.HasValue && m.MinLevel.Value > 0)
+                .OrderBy(m => m.MinLevel.Value)
+                .ToList();
             var finals = chain.Members
-                              .Where(m => !m.MinLevel.HasValue || m.MinLevel.Value == 0)
-                              .ToList();
+                .Where(m => !m.MinLevel.HasValue || m.MinLevel.Value == 0)
+                .ToList();
             var stages = evolvable.Concat(finals).ToList();
 
             <div class="evolution-chain">
-                @for (int i = 0; i < stages.Count; i++)
-                {
+                @for (var i = 0; i < stages.Count; i++) {
                     var m = stages[i];
                     var isActive = string.Equals(m.Name, Pokemon.Name, StringComparison.OrdinalIgnoreCase);
 
                     <!-- Etapa evolutiva -->
                     <div class="evolution-stage">
-                        <img src="@GetPokemonsSpriteByName(m.Name, "black_white")" alt="@m.Name" class="evolution-img @(isActive ? "active" : "")" />
+                        <img src="@GetPokemonsSpriteByName(m.Name, "black_white")" alt="@m.Name" class="evolution-img @(isActive ? "active" : "")"/>
                         <div class="evolution-name">@m.Name</div>
                     </div>
 
-                    @if (i < stages.Count - 1)
-                    {
+                    @if (i < stages.Count - 1) {
                         <div class="evolution-arrow-block">
                             <div class="evolution-arrow">→</div>
                             @* Método de evolución *@
-                            @if (m.MinLevel.HasValue && m.MinLevel.Value > 0)
-                            {
+                            @if (m.MinLevel.HasValue && m.MinLevel.Value > 0) {
                                 <div class="evolution-level">Lv. @m.MinLevel</div>
-                            }
-                            else if (!string.IsNullOrEmpty(m.Item))
-                            {
+                            } else if (!string.IsNullOrEmpty(m.Item)) {
                                 <div class="evolution-level">@m.Item</div>
-                            }
-                            else if (!string.IsNullOrEmpty(m.EvolutionTrigger))
-                            {
+                            } else if (!string.IsNullOrEmpty(m.EvolutionTrigger)) {
                                 <div class="evolution-level">@m.EvolutionTrigger</div>
                             }
                         </div>
                     }
                 }
             </div>
-        }
-        else
-        {
+        } else {
             <p>Este Pokémon no tiene cadena evolutiva registrada.</p>
         }
     </div>
@@ -126,9 +113,7 @@
 </div>
 
 @code {
-    [Parameter]
-    public Pokemon Pokemon { get; set; }
+    [Parameter] public Pokemon Pokemon { get; set; }
 
-    [Parameter]
-    public EventCallback OnClose { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
 }

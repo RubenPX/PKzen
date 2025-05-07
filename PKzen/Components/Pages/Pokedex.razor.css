@@ -5,10 +5,10 @@
     position: relative;
 }
 
-    /* Si no hay `.pokemon-detail`, elimina la última columna */
-    .pokegrid:not(:has(.pokemon-detail)) {
-        grid-template-columns: repeat(auto-fill, minmax(0px, 1fr));
-    }
+/* Si no hay `.pokemon-detail`, elimina la última columna */
+.pokegrid:not(:has(.pokemon-detail)) {
+    grid-template-columns: repeat(auto-fill, minmax(0px, 1fr));
+}
 
 .pokemon-cards {
     display: grid;

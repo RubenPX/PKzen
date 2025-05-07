@@ -1,30 +1,25 @@
 ﻿using PKzen.DataAccess;
 using PKzen.Models;
 
-namespace PKzen.Components.Pages
-{
-    public partial class Pokedex
-    {
-        private List<Pokemon> pokemons;
-        public Pokemon? SelectedPokemon { get; set; } = null;
+namespace PKzen.Components.Pages;
 
-        protected override async Task OnInitializedAsync()
-        {
-            var pokemonDal = new PokemonDal();
-            pokemons = pokemonDal.GetAll().ToList();
-        }
+public partial class Pokedex {
+    private List<Pokemon> pokemons;
+    public Pokemon? SelectedPokemon { get; set; }
 
-        private void OnPokemonSelected(Pokemon pokemon)
-        {
-            if (pokemon == null)
-                return;
+    protected override async Task OnInitializedAsync() {
+        var pokemonDal = new PokemonDal();
+        pokemons = pokemonDal.GetAll().ToList();
+    }
 
-            SelectedPokemon = pokemon;
-        }
+    private void OnPokemonSelected(Pokemon pokemon) {
+        if (pokemon == null)
+            return;
 
-        private void CloseDetails()
-        {
-            SelectedPokemon = null;
-        }
+        SelectedPokemon = pokemon;
+    }
+
+    private void CloseDetails() {
+        SelectedPokemon = null;
     }
 }

@@ -1,44 +1,30 @@
 ﻿using System.Windows;
 
-namespace PKzen.Components.Widgets
-{
-    public partial class WindowControls
-    {
-        // Obtiene la ventana principal de WPF.
-        private System.Windows.Window GetCurrentWindow() => System.Windows.Application.Current.MainWindow;
+namespace PKzen.Components.Widgets;
 
-        private void HandleMinimize()
-        {
-            var window = GetCurrentWindow();
-            if (window != null)
-            {
-                SystemCommands.MinimizeWindow(window);
-            }
-        }
+public partial class WindowControls {
+    // Obtiene la ventana principal de WPF.
+    private Window GetCurrentWindow() {
+        return Application.Current.MainWindow;
+    }
 
-        private void HandleMaximizeRestore()
-        {
-            var window = GetCurrentWindow();
-            if (window != null)
-            {
-                if (window.WindowState == WindowState.Normal)
-                {
-                    SystemCommands.MaximizeWindow(window);
-                }
-                else
-                {
-                    SystemCommands.RestoreWindow(window);
-                }
-            }
-        }
+    private void HandleMinimize() {
+        var window = GetCurrentWindow();
+        if (window != null) SystemCommands.MinimizeWindow(window);
+    }
 
-        private void HandleClose()
-        {
-            var window = GetCurrentWindow();
-            if (window != null)
-            {
-                SystemCommands.CloseWindow(window);
-            }
+    private void HandleMaximizeRestore() {
+        var window = GetCurrentWindow();
+        if (window != null) {
+            if (window.WindowState == WindowState.Normal)
+                SystemCommands.MaximizeWindow(window);
+            else
+                SystemCommands.RestoreWindow(window);
         }
+    }
+
+    private void HandleClose() {
+        var window = GetCurrentWindow();
+        if (window != null) SystemCommands.CloseWindow(window);
     }
 }

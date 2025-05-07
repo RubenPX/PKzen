@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class Move
-{
+public class Move {
     public int Id { get; set; }
     public string Name { get; set; }
     public int? Accuracy { get; set; }
@@ -33,10 +32,8 @@ public class Move
     public Pokemon Pokemon { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Move>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<Move>(entity => {
             entity.HasKey(m => m.Id);
 
             entity.Property(m => m.Name).IsRequired();

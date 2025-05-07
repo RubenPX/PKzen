@@ -1,18 +1,16 @@
-﻿@using System.Linq
-@using PKzen.Models
-
+﻿@using PKzen.Models
+@using Type = PKzen.Models.Type
 <div @onclick="HandleClick" class="poke-card @(IsSelected ? "selected" : "")">
-    <img src="@(Pokemon.Species.Sprites.FirstOrDefault(s => s.Name == "black_white")?.FrontMale)"alt="@Pokemon.Name" />
+    <img src="@(Pokemon.Species.Sprites.FirstOrDefault(s => s.Name == "black_white")?.FrontMale)" alt="@Pokemon.Name"/>
 
     <h3>@Pokemon.Name</h3>
 
     <div class="type-icons">
-        @foreach (var type in Pokemon.Species.Types)
-        {
-            var typeColor = PKzen.Models.Type.GetTypeColor(type.Type.Id);
+        @foreach (var type in Pokemon.Species.Types) {
+            var typeColor = Type.GetTypeColor(type.Type.Id);
             <div class="type-icon-container">
                 <img src="@type.Type.Name" alt="@type.Type.Name" class="type-icon"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
                 <div class="type-card" style="display: none; background-color: @typeColor;">@type.Type.Name</div>
             </div>
         }
@@ -20,15 +18,14 @@
 </div>
 
 @code {
-    [Parameter]
-    public Pokemon Pokemon { get; set; }
+    [Parameter] public Pokemon Pokemon { get; set; }
 
-    [Parameter]
-    public EventCallback<Pokemon> OnClick { get; set; }
+    [Parameter] public EventCallback<Pokemon> OnClick { get; set; }
 
-    [Parameter]
-    public bool IsSelected { get; set; }
+    [Parameter] public bool IsSelected { get; set; }
 
-    private async Task HandleClick()
-        => await OnClick.InvokeAsync(Pokemon);
+    private async Task HandleClick() {
+        await OnClick.InvokeAsync(Pokemon);
+    }
+
 }

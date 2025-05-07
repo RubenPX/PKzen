@@ -1,27 +1,25 @@
 ﻿using PKzen.DataAccess;
 
-namespace PKzen.Models
-{
-    public class Cries
-    {
-        public int Id { get; }
-        public string? Latest { get; }
-        public string? Legacy { get; }
-        public int SpeciesId { get; }
+namespace PKzen.Models;
 
-        private Species? _species;
-        private readonly SpeciesDal _speciesDal = new();
+public class Cries {
+    private readonly SpeciesDal _speciesDal = new();
 
-        public Cries() { }
+    private Species? _species;
 
-        public Cries(int id, string? latest, string? legacy, int speciesId)
-        {
-            Id = id;
-            Latest = latest;
-            Legacy = legacy;
-            SpeciesId = speciesId;
-        }
+    public Cries() { }
 
-        public Species Species => _species ??= _speciesDal.GetById(SpeciesId);
+    public Cries(int id, string? latest, string? legacy, int speciesId) {
+        Id = id;
+        Latest = latest;
+        Legacy = legacy;
+        SpeciesId = speciesId;
     }
+
+    public int Id { get; }
+    public string? Latest { get; }
+    public string? Legacy { get; }
+    public int SpeciesId { get; }
+
+    public Species Species => _species ??= _speciesDal.GetById(SpeciesId);
 }

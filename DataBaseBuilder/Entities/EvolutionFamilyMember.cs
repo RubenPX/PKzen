@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class EvolutionFamilyMember
-{
+public class EvolutionFamilyMember {
     public int Id { get; set; }
     public int? PokemonEvolutionId { get; set; }
     public string Name { get; set; }
@@ -31,10 +30,8 @@ public class EvolutionFamilyMember
     public EvolutionChain EvolutionChain { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<EvolutionFamilyMember>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<EvolutionFamilyMember>(entity => {
             entity.HasKey(efm => efm.Id);
 
             entity.Property(efm => efm.Name).IsRequired();

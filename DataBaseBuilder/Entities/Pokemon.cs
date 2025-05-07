@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseBuilder.Entities;
 
-public class Pokemon
-{
+public class Pokemon {
     public int Id { get; set; }
     public string Name { get; set; }
     public int BaseExperience { get; set; }
@@ -17,10 +16,8 @@ public class Pokemon
     public Species Species { get; set; }
 
     // Método estático para configurar la entidad
-    public static void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Pokemon>(entity =>
-        {
+    public static void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<Pokemon>(entity => {
             entity.HasKey(p => p.Id);
 
             entity.Property(p => p.Name).IsRequired();

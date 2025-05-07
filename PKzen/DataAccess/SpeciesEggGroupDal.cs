@@ -1,20 +1,23 @@
 ﻿using PKzen.Models;
 
-namespace PKzen.DataAccess
-{
-    public class SpeciesEggGroupDal : RepositoryBase<SpeciesEggGroup>
-    {
-        private const string TABLE = "SpeciesEggGroup";
+namespace PKzen.DataAccess;
 
-        public override SpeciesEggGroup GetById(int id) => throw new System.NotImplementedException();
+public class SpeciesEggGroupDal : RepositoryBase<SpeciesEggGroup> {
+    private const string TABLE = "SpeciesEggGroup";
 
-        public override IEnumerable<SpeciesEggGroup> GetAll()
-            => Query<SpeciesEggGroup>($"SELECT * FROM {TABLE}");
+    public override SpeciesEggGroup GetById(int id) {
+        throw new NotImplementedException();
+    }
 
-        public IEnumerable<SpeciesEggGroup> GetBySpeciesId(int speciesId)
-            => Query<SpeciesEggGroup>($"SELECT * FROM {TABLE} WHERE SpeciesId = @SpeciesId", new { SpeciesId = speciesId });
+    public override IEnumerable<SpeciesEggGroup> GetAll() {
+        return Query<SpeciesEggGroup>($"SELECT * FROM {TABLE}");
+    }
 
-        public IEnumerable<SpeciesEggGroup> GetByEggGroupId(int eggGroupId)
-            => Query<SpeciesEggGroup>($"SELECT * FROM {TABLE} WHERE EggGroupId = @EggGroupId", new { EggGroupId = eggGroupId });
+    public IEnumerable<SpeciesEggGroup> GetBySpeciesId(int speciesId) {
+        return Query<SpeciesEggGroup>($"SELECT * FROM {TABLE} WHERE SpeciesId = @SpeciesId", new { SpeciesId = speciesId });
+    }
+
+    public IEnumerable<SpeciesEggGroup> GetByEggGroupId(int eggGroupId) {
+        return Query<SpeciesEggGroup>($"SELECT * FROM {TABLE} WHERE EggGroupId = @EggGroupId", new { EggGroupId = eggGroupId });
     }
 }

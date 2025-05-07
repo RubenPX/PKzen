@@ -1,27 +1,25 @@
 ﻿using PKzen.DataAccess;
 
-namespace PKzen.Models
-{
-    public class SpeciesType
-    {
-        public int Id { get; }
-        public int Slot { get; }
-        public int SpeciesId { get; }
-        public int TypeId { get; }
+namespace PKzen.Models;
 
-        private Type? _type;
-        private readonly TypeDal _typeDal = new();
+public class SpeciesType {
+    private readonly TypeDal _typeDal = new();
 
-        public SpeciesType() { }
+    private Type? _type;
 
-        public SpeciesType(int id, int slot, int speciesId, int typeId)
-        {
-            Id = id;
-            Slot = slot;
-            SpeciesId = speciesId;
-            TypeId = typeId;
-        }
+    public SpeciesType() { }
 
-        public Type Type => _type ??= _typeDal.GetById(TypeId);
+    public SpeciesType(int id, int slot, int speciesId, int typeId) {
+        Id = id;
+        Slot = slot;
+        SpeciesId = speciesId;
+        TypeId = typeId;
     }
+
+    public int Id { get; }
+    public int Slot { get; }
+    public int SpeciesId { get; }
+    public int TypeId { get; }
+
+    public Type Type => _type ??= _typeDal.GetById(TypeId);
 }
