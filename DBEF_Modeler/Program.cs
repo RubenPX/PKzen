@@ -5,6 +5,8 @@ using DBEF_Modeler.Models_PokeAPI;
 // NOTA: Esto ha sido autogenerado por Scaffolding y aplicando técnicas de ingeniería inversa
 // https://learn.microsoft.com/es-es/ef/core/managing-schemas/scaffolding/?tabs=dotnet-core-cli
 
+// Command: dotnet ef dbcontext scaffold "Data Source=K:\Temporalis\PKzen\DBEF_Modeler\PokeAPIDB.sqlite3" Microsoft.EntityFrameworkCore.Sqlite
+
 // Aqui se esta usando la base de datos original de PokeAPI (Base de datos actualizada a 17/05/2025 14:30)
 
 using var context = new PokeApidbContext();
